@@ -3,10 +3,17 @@ body {
     text-align: center;
     background-color: pink;
 }
+.Play_game {
+    width: 100px;
+    height: 50px;
+    background: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
 
 #card_table {
     display: grid;
-    grid-template-columns: repeat(4, 150px);
+    grid-template-columns: repeat(4, 100px);
     gap: 10px;
     justify-content: center;
     margin: 20px auto;
@@ -17,7 +24,7 @@ body {
     height: 100px;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.5s; /* Smooth flip animation */
+    transition: transform 0.5s; 
     cursor: pointer;
 }
 
@@ -28,7 +35,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    backface-visibility: hidden; /* Hide the back when flipped */
+    backface-visibility: hidden;
 }
 
 .face {
@@ -37,10 +44,38 @@ body {
 }
 
 .cachee {
-    background-color: #ccc;
-    transform: rotateY(180deg); /* Back face is rotated */
+    background-color: #f7a8a8;
+    transform: rotateY(180deg);
 }
 
 .card.flipped {
-    transform: rotateY(180deg); /* Flip the card */
+    transform: rotateY(180deg);
+}
+
+.fin {
+    font-weight: bold;
+    font-size: 30px;
+    color: #ff4444;
+    text-align: center;
+    padding: 15px;
+    padding-top: 30px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    position: fixed;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    animation: bounceAndColor 2.5s ease-in-out infinite; 
+}
+
+@keyframes bounceAndColor {
+    0% { transform: translate(-50%, -50%) scale(1); color: #ff4444; }
+    50% { transform: translate(-50%, -50%) scale(1.2); color: #00cc00; } 
+    100% { transform: translate(-50%, -50%) scale(1); color: #ff4444; }
+}
+
+.fin::after {
+    content: " 🎉"; 
+    margin-left: 10px;
 }
