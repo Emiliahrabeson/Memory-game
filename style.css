@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: pink;
+    background-color: rgb(41, 3, 58);
 }
 .Play_game {
     width: 100px;
@@ -9,6 +9,9 @@ body {
     background: white;
     border-radius: 10px;
     cursor: pointer;
+}
+h1 {
+    color: white;
 }
 
 #card_table {
@@ -20,12 +23,14 @@ body {
 }
 
 .card {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 120px;
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.5s; 
     cursor: pointer;
+    border-radius: 50px;
+
 }
 
 .face, .cachee {
@@ -78,4 +83,14 @@ body {
 .fin::after {
     content: " 🎉"; 
     margin-left: 10px;
+}
+
+#table {
+    border: 2px solid white;
+    border-radius: 10px;
+    width: fit-content;
+    /* background-color: rgb(252, 184, 195); */
+    background-color: pink;
+    margin: 0 auto;
+    padding: 20px;
 }

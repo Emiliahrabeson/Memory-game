@@ -1,4 +1,10 @@
-let cartes = ["A", "A", "B", "B", "C", "C", "D", "D", "E", "E", "F", "F"];
+let cartes1 = ["A", "A", "B", "B", "C", "C", "D", "D"];
+let cartes2 = ["A", "A", "B", "B", "C", "C", "D", "D", "E", "E", "F", "F"];
+let cartes3 = ["A", "A", "B", "B", "C", "C", "D", "D", "E", "E", "F", "F","G","G","H","H"];
+let cartes4 = ["A", "A", "B", "B", "C", "C", "D", "D", "E", "E", "F", "F","G","G","H","H","I","I","J","J"];
+// const letters = "ABCDEFGHIJKLM";
+let level = 1;
+
 function melanger(tab) {
     for (let i = tab.length-1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -9,9 +15,25 @@ function melanger(tab) {
 
 function create_card() {
     const cardTable = document.getElementById("card_table");
-    const tab_melangee = melanger(cartes);
-    cardTable.innerHTML = "";
+    let tab_melangee = [];
 
+    if (level === 1) {
+        tab_melangee = melanger(cartes1);
+    }
+    else if (level === 2) {
+        tab_melangee = melanger(cartes2);
+    }
+    else if (level === 3) {
+        tab_melangee = melanger(cartes3);
+    }
+    else if (level === 4) {
+        tab_melangee = melanger(cartes4);
+    }
+    else {
+        tab_melangee = melanger(cartes1);
+    }
+
+    cardTable.innerHTML = "";
     tab_melangee.forEach(lettre => {
         const card = document.createElement('div');
         card.classList.add('card');
@@ -28,6 +50,8 @@ function create_card() {
         cardTable.appendChild(card);
     });
 
+    return tab_melangee;
+
 }
 
 function play() {
@@ -43,7 +67,8 @@ function play() {
     const bouton = document.querySelector('.Play_game'); 
     bouton.innerHTML = "Replay";
 
-    create_card();
+    const tab_melangee = create_card();
+    let pair = tab_melangee.length/2;
 
     setTimeout(() => {
         const cards = document.querySelectorAll('.card');
@@ -74,11 +99,16 @@ function play() {
                     cartesCliquees = []; 
                     compteur = 0;
 
-                    if (compteur_score === 6) {
+                    if (compteur_score === pair) {
+                        level += 1;
                         const congrats = document.createElement('div');
                         congrats.textContent = "Congratulation";
                         congrats.className = "fin";
                         document.body.appendChild(congrats); 
+
+                        setTimeout(()=> {
+                            play();
+                        },2000);
                     }
                 }
                 else {
