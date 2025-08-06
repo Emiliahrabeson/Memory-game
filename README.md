@@ -19,7 +19,7 @@ The goal is simple, turn over two cards at a time and find all the matching pair
 ---
 
 ## Installation
-** Clone the repository ** 
+ Clone the repository 
 ```bash
         git clone https://github.com/Emiliahrabeson/memory-game.git
         cd memory-game
