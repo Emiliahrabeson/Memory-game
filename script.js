@@ -10,14 +10,11 @@ function melanger(tab) {
 
 function create_card() {
   const cardTable = document.getElementById("card_table");
-  console.log("Create cards");
   const tab = [];
   const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWYXZ";
-  console.log(LETTERS.length);
 
   for (let i = 0; i < cardsNumber / 2; i++) {
     const index = parseInt(Math.random() * 100) % 26;
-    console.log("current index: ", index);
 
     const letter = LETTERS.charAt(index);
     console.log(letter);
