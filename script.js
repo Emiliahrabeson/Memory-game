@@ -14,19 +14,19 @@ function create_card() {
   const usedLetters = new Set();
   const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWYXZ";
 
-  while (tabs.length < count) {
+  while (tabs.length < cardsNumber) {
     const index = Math.floor(Math.random() * LETTERS.length);
     const letter = LETTERS[index];
 
     // Tsy atsofoka tsony izay efa tao
     if (!usedLetters.has(letter)) {
-      pairs.push(letter, letter);
+      tabs.push(letter, letter);
       usedLetters.add(letter);
     }
   }
 
   cardTable.innerHTML = "";
-  const tab_melangee = melanger(tab);
+  const tab_melangee = melanger(tabs);
   tab_melangee.forEach((lettre) => {
     const card = document.createElement("div");
     card.classList.add("card");
