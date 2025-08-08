@@ -10,20 +10,23 @@ function melanger(tab) {
 
 function create_card() {
   const cardTable = document.getElementById("card_table");
-  const tab = [];
+  const tabs = [];
+  const usedLetters = new Set();
   const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWYXZ";
 
-  for (let i = 0; i < cardsNumber / 2; i++) {
-    const index = parseInt(Math.random() * 100) % 26;
+  while (tabs.length < cardsNumber) {
+    const index = Math.floor(Math.random() * LETTERS.length);
+    const letter = LETTERS[index];
 
-    const letter = LETTERS.charAt(index);
-    console.log(letter);
-    tab.push(letter);
-    tab.push(letter);
+    // Tsy atsofoka tsony izay efa tao
+    if (!usedLetters.has(letter)) {
+      tabs.push(letter, letter);
+      usedLetters.add(letter);
+    }
   }
 
   cardTable.innerHTML = "";
-  const tab_melangee = melanger(tab);
+  const tab_melangee = melanger(tabs);
   tab_melangee.forEach((lettre) => {
     const card = document.createElement("div");
     card.classList.add("card");
